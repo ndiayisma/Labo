@@ -41,7 +41,15 @@ public class Souris {
         System.out.println("Une nouvelle souris !");
     }
 
-    
+    public Souris(int poids, String couleur) {
+        this.poids = poids;
+        this.couleur = couleur;
+        this.age = 0;
+        this.esperanceVie = ESPERANCE_VIE;
+        this.clonee = false;
+
+        System.out.println("Une nouvelle souris !");
+    }
   
 
     public Souris(Souris s2) {
@@ -54,7 +62,20 @@ public class Souris {
         System.out.println("Une nouvelle souris clonée !");
     }
 
-    
+    public int vieillir() {
+        this.age++;
+
+        if((this.age > this.esperanceVie/2) && (this.clonee == true)){
+            this.couleur = "verte";
+        }
+        return this.age;
+    }
+
+    public void evolue() {
+        for(int i = this.age; i < this.esperanceVie; i++){
+            this.vieillir();
+        }
+    }
 
     @Override
     public String toString() {
